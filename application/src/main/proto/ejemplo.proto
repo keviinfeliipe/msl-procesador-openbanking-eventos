@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ec.com.dinersclub.dddmodules.application.grpc.ejemplo";
+option java_outer_classname = "EjemploProto";
+
+package ejemplo;
+
+service Ejemplo {
+    rpc consultarValidacion (EjemploRequest) returns (EjemploResponse) {}
+}
+
+message EjemploRequest {
+    Header dinHeader = 1;
+    BodyResquestEjemplo dinBody = 2;
+}
+
+message Header {
+	string aplicacionId = 1;
+	string canalId = 2;
+	string sesionId = 3;
+	string dispositivo = 4;
+	string idioma = 5;
+	string portalId = 6;
+	string uuid = 7;
+	string ip = 8;
+	string horaTransaccion = 9;
+	string llaveSimetrica = 10;
+	string usuario = 11;
+	PaginadoHeader paginado = 12;
+	repeated TagsHeader tags = 13;
+}
+
+message PaginadoHeader {
+    int32 cantRegistros = 1;
+	int32 numTotalPag = 2;
+	int32 numPagActual = 3;
+}
+
+message TagsHeader {
+    string clave = 1;
+	string valor = 2;
+}
+
+message BodyResquestEjemplo {
+    string usuario = 1;
+}
+
+message EjemploResponse {
+	Header dinHeader = 1;
+	BodyResponseEjemplo dinBody = 2;
+	Error dinError = 3;
+}
+
+message BodyResponseEjemplo {
+	 string estado = 1;
+}
+
+message Error {
+	string tipo = 1;
+	string fecha = 2;
+	string origen = 3;
+	string codigo = 4;
+	string codigoErrorProveedor = 5;
+	string mensaje = 6;
+	string detalle = 7;
+}
+
+

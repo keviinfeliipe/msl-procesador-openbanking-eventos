@@ -1,0 +1,7 @@
+include:
+  - remote: "${URL_PLANTILLAS}.continuousIntegration.yml"
+  - remote: "${URL_PLANTILLAS}.deployService.yml"
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+  - template: Container-Scanning.gitlab-ci.yml
+
